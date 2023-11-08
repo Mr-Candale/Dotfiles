@@ -1,0 +1,9 @@
+typeset -U PATH path
+
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME="qt6ct"
+export XDG_CURRENT_DESKTOP=sway
+
+export PKG_CONFIG_PATH="/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:$PKG_CONFIG_PATH"
+. "$HOME/.cargo/env"
