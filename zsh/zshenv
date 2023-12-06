@@ -1,9 +1,21 @@
 typeset -U PATH path
 
-export QT_QPA_PLATFORM=wayland
+export PATH="$PATH:/home/pan_svichka/.local/share/gem/ruby/3.0.0/bin"
+export PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/share/pkgconfig"
+export GDK_BACKEND=wayland
+export RANGER_LOAD_DEFAULT_RC=false
+
+export QT_QPA_PLATFORM=xcb
 export QT_QPA_PLATFORMTHEME="qt6ct"
+
 export XDG_CURRENT_DESKTOP=sway
 
 export PKG_CONFIG_PATH="/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/usr/share/pkgconfig:$PKG_CONFIG_PATH"
+
 . "$HOME/.cargo/env"
+
+#export XDG_RUNTIME_DIR=/run/user/1000
+
