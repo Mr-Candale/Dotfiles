@@ -18,40 +18,53 @@ font pango:monospace 13
 output * bg /home/pan_svichka/Pictures/wallpaper/magentaCity.jpg fill
 
 #Important#
-exec systemctl --user import-enviroment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-exec dbus-update-activation-enviroment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+#exec --no-startup-id systemctl --user import-enviroment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+#exec --no-startup-id dbus-update-activation-enviroment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
-exec gammastep -O 2700 
+exec --no-startup-id otd-daemon
+exec --no-startup-id gammastep -O 2700 
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id pavucontrol
-#exec --no-startup-id xautolock -time 20  -locker "swaylock -n"
-exec_always --no-startup-id dunst
+exec_always --no-startup-id swaync 
+exec_always --no-startup-id import-gsettings
 exec --no-startup-id waybar
 
-#Not that important#
-exec --no-startup-id xfce4-terminal     
+#Other programs#
+exec --no-startup-id kitty     
 exec --no-startup-id firefox        
 exec --no-startup-id audacious  
 exec --no-startup-id aegisub        
-exec --no-startup-id ~/Desktop/Telegram/Telegram 
-exec_always import-gsettings
+exec --no-startup-id telegram-desktop 
 
+
+#exec swayidle -w \
+ #  timeout 600 'swaylock -f -c 000000' \
+ #  resume 'swaylock -f -c 000000 --daemon' \
+ #  before-sleep 'swaylock -f -c 000000'
+
+
+#Inputs#
 input 2522:10:A4Tech_PS/2+USB_Mouse left_handed enabled
+input 1112:390:SiGmaMicro_USB_Optical_Mouse left_handed enabled
+input 1386:221:Wacom_Bamboo_Connect_Pen left_handed enabled 
+input 0:0:OpenTabletDriver_Virtual_Tablet left_handed disabled
 
+#Compose key#
+input * xkb_options compose:ralt
+#Layout#
 input type:keyboard {
         xkb_layout us,ua
 }
-
-
-#Tilling drag
-#tiling_drag off
+output * adaptive_sync on 
 
 #Set value
 set $up k
 set $down j
 set $left l
 set $right h
-set $M4 Mod4
+
+set $Super Mod4
+set $mod Alt
 
 # Define names for default workspaces
 set $ws1 "1:Null"
@@ -67,12 +80,12 @@ set $ws10 "10:P"
 set $ws11 "11:A"
 set $ws12 "12:O"
 set $ws13 "13:T"
-set $ws14 "14:-"
+set $ws14 "14:K"
 
 # Assign applications to workspaces
-#assign [class="Xfce4-terminal"] $ws1
-assign [class="firefox"] $ws2
-assign [app_id="org.telegram.*"] $ws3
+assign [app_id="firefox"] $ws2
+assign [app_id="org.telegram.desktop"] $ws3
+assign [class="TelegramDesktop"] $ws3
 assign [app_id="aegisub.*"] $ws4
 assign [class="aegisub"] $ws4
 assign [class="java"] $ws5
@@ -84,13 +97,7 @@ assign [class="Aseprite"] $ws11
 assign [class="osu!"] $ws12
 assign [class="qBittorrent"] $ws13
 assign [app_id="subl"] $ws1
-
-
-###Set some value###
-set $mod Alt
-
-#Compose key#
-input * xkb_options compose:ralt
+assign [class="krita"] $ws14
 
 bindsym --to-code {
 
@@ -99,22 +106,23 @@ Print exec grim ~/Pictures/Screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').p
 Shift+Print exec slurp | grim -g - ~/Pictures/Screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png
 
 # Volume Control
-XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% &&  $refresh_i3status
-XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% &&  $refresh_i3status
-XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle &&        $refresh_i3status
-XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status 
+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%      &&  $refresh_i3status
+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%      &&  $refresh_i3status
+XF86AudioMute        exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@     toggle &&  $refresh_i3status
+XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status 
 
 # Start a terminal
-$mod+Return exec xfce4-terminal
+$mod+Return exec kitty
 
 # Kill the focused window
 $mod+Shift+q kill
 
 # Start rofi (a program launcher)
 $mod+d exec wofi --show drun
+$Super+d exec rofi -show drun
 
 #Lock screen
-$mod+Mod4+x exec swaylock
+$mod+Control+x exec swaylock
 
 # Change focus
 $mod+$left focus left
@@ -151,7 +159,7 @@ $mod+space focus mode_toggle
 $mod+p exec aegisub
 $mod+m exec subl
 
-Mod4+Space input type:keyboard xkb_switch_layout next
+$Super+Space input type:keyboard xkb_switch_layout next
 #$mod+d exec j4-dmenu-desktop --dmenu="dmenu -i -nb '#000000' -nf '#FFFFFF' -sb '#FF6C00' -sf '#FFFFFF'" --term="cool-retro-term"
 
 

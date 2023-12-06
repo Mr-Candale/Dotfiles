@@ -7,12 +7,12 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["sway/scratchpad", "tray", "sway/language", "pulseaudio", "memory", "cpu", "disk#ssd", "disk", "network", "clock"],
+    "modules-right": ["sway/scratchpad", "tray", "sway/language", "pulseaudio", "memory", "network", "clock"],
     // Modules configuration
     
     "sway/window": {
        // "format": "",
-        "max-length": 50,
+    //    "max-length": 60 ,
     },
 
 
@@ -75,6 +75,7 @@
         "format": "{:%F %I:%M:%S %p}",
         "interval": 1,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "swaync-client -t -sw",
     },
     "cpu": {
         "format": "󰍛 {usage}%",

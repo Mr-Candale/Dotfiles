@@ -106,7 +106,7 @@ window#waybar.solo {
 }
 
 #clock {
-    background-color: #02F600;
+    background-color: #FCD00A;
     color: #000000;
 }
 
@@ -128,8 +128,8 @@ label:focus {
 }
 
 #memory {
-    background-color: #4139B3;
-    color: #FFFFFF;
+    background-color: #fc0a36;
+    color: #000000;
 }
 
 #network {
@@ -143,7 +143,7 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #579933;
+    background-color: #0a36fc;
     color: #FFFFFF;
 }
 
