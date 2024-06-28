@@ -9,9 +9,9 @@
 
 window#waybar {
     background: @theme_base_color;
-    background-color: #000B0F;
+    background-color: #2b0099;
   /* border-bottom: 0px solid rgba(100, 114, 125, 0.5); */
-    color: #F800FF;
+    color: #00e62e;
     transition-property: background-color;
     transition-duration: .5s;
     border-radius: 0;
@@ -52,7 +52,7 @@ window#waybar.solo {
 }
 
 #workspaces button.focused {
-    background-color: #0D2A34;
+    background-color: #503595;
     box-shadow: inset 0 -3px #B302A5;
 }
 
@@ -106,11 +106,11 @@ window#waybar.solo {
 }
 
 #clock {
-    background-color: #FCD00A;
+    background-color: #FF5F1F;
     color: #000000;
 }
 #battery {
-    background-color: #FFFFFF;
+    background-color: #FF5F1F;
     color: #000000;
 }
 
@@ -120,17 +120,17 @@ label:focus {
 }
 
 #cpu {
-    background-color: #8234A2;
+    background-color: #FF5F1F;
     color: #FFFFFF;
 }
 
 #memory {
-    background-color: #fc0a36;
+    background-color: #FF5F1F;
     color: #000000;
 }
 
 #network {
-    background-color: #00FFC7;
+    background-color: #FF5F1F;
     color: #000000;
 }
 
@@ -171,9 +171,9 @@ label:focus {
 #language {
     background-color: #000000;
     color: #FFFFFF;
-    padding: 0 0px;
-    margin: 0px 0px;
-    min-width: 0px;
+    padding: 0 5px;
+    margin: 6px 3px;
+    min-width: 16px;
 }
 
 #keyboard-state {

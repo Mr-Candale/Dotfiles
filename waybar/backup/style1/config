@@ -2,44 +2,35 @@
     "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    // "width": 2560, // Waybar width
+    // "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
     "modules-center": [],
-    "modules-right": ["custom/notification", "tray","pulseaudio","memory","network","battery","clock"],
-   
+    "modules-right": ["custom/notification", "tray", "pulseaudio", "memory", "network","battery", "clock"],
     // Modules configuration
     
-    "hyprland/window": {
+    "sway/window": {
        // "format": "",
     //    "max-length": 60 ,
     },
 
 
 
-     "hyprland/workspaces": {
+     "sway/workspaces": {
          "disable-scroll": false,
          "all-outputs": false,
-         "format": "{name}:{icon}",
-         "format-icons": {
-             "1": "Null",
-             "2": "F",
-             "3": "TG",
-             "4": "S",
-             "5": "J",
-             "6": "PMC",
-             "7": "PL",
-             "8": "",
-             "9": "M",
-             "10": "P",
-             "11": "A",
-             "12": "O",
-             "13": "T",
-             "14": "K",
-             "15": "E",
-             "16": "D",
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
     //         "urgent": "",
     //         "focused": "",
     //         "default": ""
-         }
+    //     }
     },
     "keyboard-state": {
         "numlock": true,
@@ -50,17 +41,14 @@
             "unlocked": "U"
         }
     },
-    "hyprland/language": {
-    "format": "{}",
-    "min-length": 3,
-    "format-en":"us",
-    "format-uk":"uk",
- //  "keyboard-name": "at-translated-set-2-keyboard"
-   },    
-    "hyprland/mode": {
+    "sway/language": {
+            "format": "{flag}",
+            "tooltip-format": "{long}"
+    },
+    "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "hyprland/scratchpad": {
+    "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
         "format-icons": ["", ""],
