@@ -1,4 +1,3 @@
-###########################################################################################################################
 #                                                                                                                         #
 #      ___           ___       ___           ___                    ___           ___           ___           ___         #
 #     /\  \         /\__\     /\  \         |\__\                  /\  \         /\__\         /\  \         |\__\        #
@@ -21,17 +20,16 @@ output * bg /home/pan_svichka/Pictures/wallpaper/archrunes.jpg fill
 #exec --no-startup-id systemctl --user import-enviroment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 #exec --no-startup-id dbus-update-activation-enviroment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
-#exec --no-startup-id fcitx5 -d &
-exec --no-startup-id ibus -d &
+exec --no-startup-id fcitx5 -d &
+exec --no-startup-id ibus-daemon -rxRd &
 exec --no-startup-id otd-daemon -d &
 exec --no-startup-id gammastep -O 2700 
 exec --no-startup-id pavucontrol
 exec_always --no-startup-id swaync 
 exec_always --no-startup-id import-gsettings
-exec waybar
+exec waybar --configme/pan_svichka/.config/waybar/configSway'
 exec source ~/.zshenv
 #Other programs#
-exec fcitx5
 exec firefox        
 exec aegisub        
 exec telegram-desktop 
@@ -50,15 +48,6 @@ input 2522:10:A4Tech_PS/2+USB_Mouse left_handed enabled
 input 1112:390:SiGmaMicro_USB_Optical_Mouse left_handed enabled
 input 1386:221:Wacom_Bamboo_Connect_Pen left_handed enabled 
 input 0:0:OpenTabletDriver_Virtual_Tablet left_handed disabled
-input * { 
- tap enabled
- }
-#Compose key#
-input * xkb_options compose:ralt
-#Layout#
-input type:keyboard {
-        xkb_layout us,ua
-}
 
 #Set value
 set $up k
@@ -93,7 +82,6 @@ assign [app_id="org.telegram.desktop"] $ws3
 assign [class="TelegramDesktop"] $ws3
 assign [app_id="aegisub.*"] $ws4
 assign [class="aegisub"] $ws4
-assign [class="java"] $ws5
 assign [class="PollyMC"] $ws6
 assign [class="org-prismlauncher-EntryPoint"] $ws7
 assign [class="audacious"] $ws9
@@ -107,7 +95,7 @@ assign [app_id="libreoffice*"] $ws15
 assign [class="discord"] $ws16
 
 bindsym --to-code {
-$Super+Space input type:keyboard xkb_switch_layout next
+#$Super+Space input type:keyboard xkb_switch_layout next
 # Screenshots using grim and slurp
 Print exec grim ~/Pictures/Screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png
 Shift+Print exec slurp | grim -g - ~/Pictures/Screenshots/screenshot-$(date '+%Y-%m-%d-%H-%M-%S').png
@@ -222,9 +210,7 @@ $mod+Shift+v move container to workspace $ws16
 # Configuration Reloading and Exiting
 $mod+Shift+r reload
 $mod+Shift+e exec swaymsg exit
-
 $mod+r mode "resize"
-
 }
 
 # Resize window (you can also use the mouse for that)
